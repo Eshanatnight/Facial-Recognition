@@ -1,2 +1,8 @@
-*.tgz
+# Data Set Huge size LFS needed -> need to be dealt with at the end
 /Data
+
+# Dataset in a tgz file -> To be removed after finalization
+*.tgz
+
+# Docker Build Script
+build_docker.bat
