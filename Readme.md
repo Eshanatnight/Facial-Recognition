@@ -8,10 +8,6 @@
 
 The data set used to be in the repository, but it has been removed. Because of LFS issues. get it by running the command yourself.
 
-## Environment Setup
-
-We use Docker but its not required.
-
 ### Detect, Crop & Align with Dlib
 
 After creating the environment, we begin preprocessing.
@@ -26,8 +22,6 @@ Just run this:
 We’ll use this face landmark predictor to find the location of the inner eyes and bottom lips of a face in an image. These coordinates will be used to center align the image.
 
 ***Thank You Carnegie Mellon University***
-
-
 
 ## References
 
