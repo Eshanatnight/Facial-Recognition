@@ -8,6 +8,6 @@
 
 The data set used to be in the repository, but it has been removed. Because of LFS issues. get it by running the command yourself.
 
-# Environment Setup
+## Environment Setup
 
 We use Docker but its not required.
