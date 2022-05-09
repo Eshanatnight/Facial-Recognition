@@ -11,6 +11,13 @@ numpy = "1.13.1"
 requests = "2.18.3"
 opencv-python = "4.5.5"
 dlib = "19.24.0"
+tensorflow-gpu = "*"
+keras = "*"
+setuptools = "*"
+matplotlib = "*"
+pandas = "*"
+jupyter = "*"
+h5py = "*"
 
 [dev-packages]
 
