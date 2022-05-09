@@ -11,6 +11,7 @@ import cv2
 
 # in Repository imports
 from align_dlib import AlignDlib
+import utils
 
 
 # initialize the logger object
@@ -18,15 +19,6 @@ logger = logging.getLogger(__name__)
 
 # initialize the AlignDlib object
 align_dlib = AlignDlib("landmarks\shape_predictor_68_face_landmarks.dat")
-
-
-# to be replaced with the one in utils.py
-def make_dirs_if_not_exists(path: str):
-    """
-    makes the directories if they do not exist.
-    """
-    if not os.path.exists(path):
-        os.makedirs(path)
 
 
 def _buffer_image(filename):
@@ -91,11 +83,11 @@ def main(input_dir, output_dir, crop_dim):
     # spawn threads to process images
     pool = mp.Pool(processes=mp.cpu_count())
 
-    make_dirs_if_not_exists(output_dir)
+    utils.make_dirs_if_not_exists(output_dir)
 
     for image_dir in os.listdir(input_dir):
         image_output_dir = os.path.join(output_dir, os.path.basename(os.path.basename(image_dir)))
-        make_dirs_if_not_exists(image_output_dir)
+        utils.make_dirs_if_not_exists(image_output_dir)
 
     image_paths = glob.glob(os.path.join(input_dir, '**/*.jpg'))
 
