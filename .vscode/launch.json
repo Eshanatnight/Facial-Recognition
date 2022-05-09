@@ -6,7 +6,7 @@
     "configurations": [
         // Run the preprocessor
         {
-            "name": "Face Recognition-Preprocessor",
+            "name": "Preprocess-Face Recognition",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/src/preprocess.py",
@@ -22,9 +22,9 @@
             ]
         },
 
-        // Get the Models
+        /* Get the Models
         {
-            "name": "Face Recognition-GetModel",
+            "name": "GetModel-Face Recognition",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/src/getModel.py",
@@ -35,15 +35,30 @@
                 "etc"
             ]
         },
+        */
 
         // LFW Input
         {
-            "name": "Face Recognition-LFW",
+            "name": "LFW-Face Recognition",
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/src/lfw_input.py",
             "console": "integratedTerminal",
             "justMyCode": true,
+        },
+
+        // Train the Model
+        {
+            "name": "Train-Face Recognition",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--input-dir",
+                "output/intermediate",
+                "--model-path",
+                "etc/20170511-185253.zip",]
         }
     ]
 }
