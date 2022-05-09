@@ -12,3 +12,6 @@ __pycache__
 
 # output
 /output
+
+# Bug that caused the html files to be downloaded
+*.html
