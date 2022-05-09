@@ -5,8 +5,6 @@ import os
 import requests
 import zipfile
 
-import utils
-
 model_dict = {
     '20170511-185253': '0B5MzpY9kBtDVOTVnU3NIaUdySFE'
     }
