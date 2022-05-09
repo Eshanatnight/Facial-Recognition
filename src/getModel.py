@@ -1,13 +1,22 @@
-# Python Inbuilt imports
 import argparse
+
 import logging
 import os
 import requests
 import zipfile
 
+"""
+Bug: the google drive api is not working for me.
+the response is a web page with a link to the file
+rather than the file itself.
+
+i am going to add the zip to the reposistory
+and this app should not be used.
+"""
+
 model_dict = {
     '20170511-185253': '0B5MzpY9kBtDVOTVnU3NIaUdySFE'
-    }
+}
 
 
 def download_and_extract_model(model_name, data_dir):
