@@ -1,9 +1,13 @@
 """
     API to load the embeddings and labels from the LFW dataset.
+
     we utilized Tensorflow’s queue api to load the preprocessed images in parallel.
     With the queue images can be loaded in parallel using multi-threading.
     When using a GPU, this allows image preprocessing to be performed on CPU,
     while matrix multiplication is performed on GPU.
+
+    Fuck off Tensorflow, you are a piece of shit for changing the API.
+    I get the whole all in one thing, but just why?
 """
 
 import logging
@@ -39,7 +43,7 @@ def read_data(image_paths, label_list, image_size, batch_size, max_nrof_epochs,
     labels = ops.convert_to_tensor(label_list, dtype=tf.int32)
 
     # Makes an input queue
-    input_queue = tf.train.slice_input_producer((images, labels), num_epochs=max_nrof_epochs, shuffle=shuffle, )
+    input_queue = tf.compat.v1.train.slice_input_producer((images, labels), num_epochs=max_nrof_epochs, shuffle=shuffle, )
 
     images_labels = []
     imgs = []
@@ -47,7 +51,7 @@ def read_data(image_paths, label_list, image_size, batch_size, max_nrof_epochs,
 
     for _ in range(num_threads):
         image, label = read_image_from_disk(filename_to_label_tuple=input_queue)
-        image = tf.random_crop(image, size=[image_size, image_size, 3])
+        image = tf.compat.v1.random_crop(image, size=[image_size, image_size, 3])
         image.set_shape((image_size, image_size, 3))
         image = tf.image.per_image_standardization(image)
 
@@ -64,8 +68,9 @@ def read_data(image_paths, label_list, image_size, batch_size, max_nrof_epochs,
         lbls.append(label)
         images_labels.append([image, label])
 
-    image_batch, label_batch = tf.train.batch_join(images_labels, batch_size=batch_size, capacity=4 * num_threads,
-                                            enqueue_many=False, allow_smaller_final_batch=True)
+    image_batch, label_batch = tf.compat.v1.train.batch_join(images_labels, batch_size=batch_size,
+            capacity=4 * num_threads, enqueue_many=False, allow_smaller_final_batch=True
+            )
 
     return image_batch, label_batch
 
@@ -78,7 +83,7 @@ def read_image_from_disk(filename_to_label_tuple):
     :return: tuple of image and label
     """
     label = filename_to_label_tuple[1]
-    file_contents = tf.read_file(filename_to_label_tuple[0])
+    file_contents = tf.compat.v1.read_file(filename_to_label_tuple[0])
     example = tf.image.decode_jpeg(file_contents, channels=3)
     return example, label
 
