@@ -9,3 +9,6 @@ build_docker.bat
 
 # Python Cache
 __pycache__
+
+# output
+/output
