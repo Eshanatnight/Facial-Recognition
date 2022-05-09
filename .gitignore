@@ -6,3 +6,5 @@
 
 # Docker Build Script
 build_docker.bat
+
+shape_predictor_68_face_landmarks.dat
