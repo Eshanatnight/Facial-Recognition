@@ -24,10 +24,14 @@ def download_and_extract_model(model_name, data_dir):
         os.makedirs(data_dir)
 
     file_id = model_dict[model_name]
+
+    # google drive doing not work
+    # using the local file
     destination = os.path.join(data_dir, model_name + '.zip')
+
     if not os.path.exists(destination):
         print('Downloading model to %s' % destination)
-        download_file_from_google_drive(file_id, destination)
+        # download_file_from_google_drive(file_id, destination)
         with zipfile.ZipFile(destination, 'r') as zip_ref:
             print('Extracting model to %s' % data_dir)
             zip_ref.extractall(data_dir)
