@@ -5,12 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Face Recognition",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceRoot}/src/main.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+
+            "args": [ "--input-dir",
+                "Data/lfw",
+                "--output-dir",
+                "output/intermediate",
+                "--crop-dim",
+                "180"
+            ]
         }
     ]
 }
